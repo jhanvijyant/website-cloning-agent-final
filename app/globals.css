@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --bg: #0f1115;
+  --panel: #1a1d24;
+  --panel-alt: #20242c;
+  --border: #eff5ff;
+  --text: #fffeff;
+  --muted: #edededeb;
+  --accent: #00ff80;
+  --accent-soft: rgba(91, 127, 255, 0.14);
+  --teal: #4fb3a9;
+  --teal-soft: rgba(79, 179, 169, 0.14);
+  --danger: #e5484d;
+  --danger-soft: rgba(229, 72, 77, 0.14);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-mono-agent {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.agent-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.agent-input {
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.agent-input::placeholder {
+  color: var(--muted);
+}
+
+.agent-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+
+.agent-btn-primary {
+  background: var(--accent);
+  color: #3f4c65;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  min-width: 142px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 255, 128, 0.18);
+  transition: background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease,
+    box-shadow 0.15s ease;
+}
+
+.agent-btn-primary:hover:not(:disabled) {
+  background: #19ff91;
+  border-color: #19ff91;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 255, 128, 0.28);
+}
+
+.agent-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 7px rgba(0, 255, 128, 0.18);
+}
+
+.agent-btn-primary:disabled {
+  background: #075b3b;
+  border-color: #075b3b;
+  color: #7aa893;
+  opacity: 0.75;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.agent-btn-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 6px;
+}
+
+.agent-btn-toggle.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #456293;
+}
+
+.agent-btn-toggle:hover:not(.active) {
+  color: var(--text);
+  background: var(--panel-alt);
+}
+
+.agent-error {
+  background: var(--danger-soft);
+  border: 1px solid var(--danger);
+  color: #ffb3b5;
+  border-radius: 8px;
+}
+
+/* Pipeline rail */
+.stage-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.stage-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.55rem 0;
+}
+
+.stage-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.stage-item.done .stage-dot {
+  background: var(--teal);
+}
+
+.stage-item.active .stage-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.stage-item.error .stage-dot {
+  background: var(--danger);
+  box-shadow: 0 0 0 4px var(--danger-soft);
+}
+
+.stage-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.1rem;
+}
+
+.stage-item.done .stage-label,
+.stage-item.active .stage-label,
+.stage-item.error .stage-label {
+  color: var(--text);
+}
+
+.stage-connector {
+  position: absolute;
+  left: 4px;
+  top: 1.35rem;
+  bottom: -0.55rem;
+  width: 1px;
+  background: var(--border);
+}
+
+.stage-item:last-child .stage-connector {
+  display: none;
+}
+
+/* ================================
+   ANALYSIS PANEL CONTENT
+   ================================ */
+
+.analysis-panel {
+  color: var(--text);
+}
+
+.analysis-panel h1,
+.analysis-panel h2,
+.analysis-panel h3,
+.analysis-panel h4,
+.analysis-panel strong {
+  color: #ffffff !important;
+}
+
+.analysis-panel p,
+.analysis-panel li,
+.analysis-panel span,
+.analysis-panel div {
+  color: #d7dce5 !important;
+}
+
+.analysis-panel .analysis-value,
+.analysis-panel .analysis-text {
+  color: #d7dce5 !important;
+}
+
+.analysis-panel .analysis-section {
+  border-top: 1px solid #3a404b;
+  padding: 14px 0;
+}
+
+.analysis-panel .analysis-label {
+  color: #9ca6b5 !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.analysis-panel .analysis-value {
+  color: #e8ecf2 !important;
+  line-height: 1.55;
+}
+
+.analysis-panel ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.analysis-panel li {
+  margin-bottom: 5px;
+}
+
+.analysis-panel hr {
+  border: 0;
+  border-top: 1px solid #0f5ae6;
+  margin: 16px 0;
+}
+
+.agent-panel p,
+.agent-panel span,
+.agent-panel div {
+  opacity: 1;
+}
