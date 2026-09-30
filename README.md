@@ -169,5 +169,6 @@ No LLM call ever receives raw HTML — only the small structured
   directly.
 
 ---
-
+## video preview
+link:https://youtu.be/HTYtPQ4HYuY
 
